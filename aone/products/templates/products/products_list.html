@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+		<div class="col-md-2 card">
+			<h5 class="card-body">Filter By:</h5>
+		</div>
+		<div class="col-md-4">
+			<div class="dropdown card-body">
+				<button type="button" class="btn btn-primary btn-block dropdown-toggle" data-toggle="dropdown">
+					Company name
+				</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item">Sigma</a>
+					<a class="dropdown-item">Vision</a>
+					<a class="dropdown-item">Company 3</a>
+					<a class="dropdown-item">Company 4</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card" style="background-color: yellow;">
+				<div class="card-body">
+					<a href="{% url 'products:createProd' %}" class="btn btn-primary btn-block" role="button">Create Product</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="margin-top: 2em" >
+		<div class="col-md-12">
+			<table class="table table-striped table-responsive table-bordered">
+				<thead>
+					<th>Sr.no</th>
+					<th>Product Name</th>
+					<th>Product Id</th>
+					<th>Company</th>
+					<th>Rate</th>
+					<th>Per</th>
+					<th>Photo</th>
+					<th>Edit</th>
+				</thead>
+				<tbody>
+
+					{% for product in productsList %}
+
+					{# This is comment: We have set productsLists as context_object_name in views to iterate#}
+					{# We can also use modelName_list as context eg: products_list #}
+
+					<tr>
+
+						<td>{{ forloop.counter }}</td>
+						<td>{{ product.prodName }}</td>
+						<td>{{ product.prodCode }}</td>
+						<td>{{ product.compName }}</td>
+						<td>{{ product.rate }}</td>
+						<td>{{ product.per }}</td>
+						<td>
+							{% if product.prodPhoto %}
+							<img src="{{ product.prodPhoto.url }}" height='100' width='100' >
+							{% else %}
+							<p>No Image </p>
+							{% endif %}
+						</td>
+						<td>
+							<a href="productDetail.html">
+								<span class="fa fa-pencil"></span>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+{% endblock %}

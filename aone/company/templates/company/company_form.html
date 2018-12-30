@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<form method="POST">
+    <h2 style="beBold"> Create Company.</h2>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    {% buttons %}
+        <button type="submit" class="btn btn-primary btn-large">Create Company</button>
+    {% endbuttons %}
+</form>
+{% endblock %}
