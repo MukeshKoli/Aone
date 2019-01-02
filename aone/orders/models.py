@@ -4,6 +4,7 @@ from company.models import Company
 from products.models import Products
 import time
 import datetime
+import random
 
 
 # Create your models here.
@@ -22,8 +23,9 @@ class Orders(models.Model):
         (Billed, 'Billed')
     )
 
-    orderId = models.CharField(max_length=256, unique=True, null=False, verbose_name="Order ID")
-    orderDate = models.DateTimeField(default=timezone.now(), verbose_name="Date")
+    orderId = models.CharField(max_length=256, unique=True, blank=True,
+                               verbose_name="Order ID")
+    orderDate = models.DateField(default=datetime.date.today(), verbose_name="Date")
     orderMonth = models.DateField(default=datetime.date.today(), verbose_name="Month")
     compName = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="Company Name")
     itemName = models.ForeignKey(Products, on_delete=models.CASCADE, verbose_name="Items")
@@ -33,3 +35,7 @@ class Orders(models.Model):
     def __str__(self):
         return self.orderId
 
+    def save(self):
+
+        self.orderId = random.randint(1000000000, 9999999999)
+        super(Orders, self).save()

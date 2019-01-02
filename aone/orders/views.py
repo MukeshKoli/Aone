@@ -15,7 +15,9 @@ class ListOrders(generic.ListView):
 class CreateOrders(generic.CreateView):
 
     model = Orders
-    fields = ('orderId', 'orderDate', 'compName', 'itemName', 'orderStatus')
+    # Order Id will be generated when form is saved.
+
+    fields = ('orderDate', 'compName', 'itemName', 'orderStatus')
     success_url = reverse_lazy("orders:listOrders")
 
 
