@@ -29,6 +29,7 @@ class Orders(models.Model):
     orderMonth = models.DateField(default=datetime.date.today(), verbose_name="Month")
     compName = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="Company Name")
     itemName = models.ForeignKey(Products, on_delete=models.CASCADE, verbose_name="Items")
+    itemQuantity = models.CharField(max_length=256, verbose_name="Quantity", blank=True)
     orderStatus = models.CharField(max_length=50, choices=STATUS_CHOICES,
                                    default="In Progress", verbose_name="Status")
 
@@ -39,3 +40,6 @@ class Orders(models.Model):
 
         self.orderId = random.randint(1000000000, 9999999999)
         super(Orders, self).save()
+
+
+
