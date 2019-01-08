@@ -27,9 +27,9 @@ class Orders(models.Model):
                                verbose_name="Order ID")
     orderDate = models.DateField(default=datetime.date.today(), verbose_name="Date")
     orderMonth = models.DateField(default=datetime.date.today(), verbose_name="Month")
-    compName = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="Company Name")
-    itemName = models.ForeignKey(Products, on_delete=models.CASCADE, verbose_name="Items")
-    itemQuantity = models.CharField(max_length=256, verbose_name="Quantity", blank=True)
+    compName = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, verbose_name="Company Name")
+    itemName = models.ForeignKey(Products, on_delete=models.SET_NULL, null=True, verbose_name="Items")
+    itemQuantity = models.PositiveIntegerField(max_length=256, verbose_name="Quantity", default=1)
     orderStatus = models.CharField(max_length=50, choices=STATUS_CHOICES,
                                    default="In Progress", verbose_name="Status")
 
