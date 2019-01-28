@@ -7,7 +7,11 @@ class OrderForm(forms.ModelForm):
 
     class Meta:
         model = Orders
+<<<<<<< HEAD
         fields = ('compName', 'itemName', 'itemQuantity', 'orderStatus')
+=======
+        fields = ('compName', 'itemName', 'itemQuantity',)
+>>>>>>> b485e7c327aed112c5b759b728aabce054f19b09
 
 
     def __init__(self, *args, **kwargs):
@@ -23,6 +27,11 @@ class OrderForm(forms.ModelForm):
                 pass
 
         elif self.instance.pk:
+<<<<<<< HEAD
 
             # self.fields['itemName'].queryset = self.instance.itemName.prodName_set.order_by('compName')
             self.fields['itemName'].queryset = Products.objects.filter(compName_id=self.instance.pk).order_by('compName')
+=======
+            print(str(self.instance.pk)) # This is to check.
+            self.fields['itemName'].queryset = self.instance.compName.prodName_set.order_by('compName')
+>>>>>>> b485e7c327aed112c5b759b728aabce054f19b09

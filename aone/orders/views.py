@@ -4,8 +4,11 @@ from django.urls import reverse, reverse_lazy
 from orders.models import Orders
 from .forms import OrderForm
 from products.models import Products
+<<<<<<< HEAD
 from company.models import Company
 from django.contrib.auth.mixins import LoginRequiredMixin
+=======
+>>>>>>> b485e7c327aed112c5b759b728aabce054f19b09
 
 # Create your views here.
 
