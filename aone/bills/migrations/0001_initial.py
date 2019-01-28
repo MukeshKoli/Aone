@@ -9,7 +9,6 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('orders', '0002_auto_20181228_1100'),
         ('company', '0001_initial'),
     ]
 

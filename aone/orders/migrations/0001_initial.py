@@ -10,8 +10,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('company', '0001_initial'),
-        ('products', '0004_remove_products_compid'),
+
     ]
 
     operations = [

@@ -7,16 +7,14 @@
 			<h5 class="card-body">Filter By:</h5>
 		</div>
 		<div class="col-md-4">
-			<div class="dropdown card-body">
-				<button type="button" class="btn btn-primary btn-block dropdown-toggle" data-toggle="dropdown">
-					Company name
-				</button>
-				<div class="dropdown-menu">
-					<a class="dropdown-item">Sigma</a>
-					<a class="dropdown-item">Vision</a>
-					<a class="dropdown-item">Company 3</a>
-					<a class="dropdown-item">Company 4</a>
-				</div>
+			<div class="card-body">
+				<select id="compFilter" class = "btn btn-Light btn-block" data-tableId="mytab">
+				<option value="All">Company</option>
+					{% for comp_name in comp_name_list %}
+					<option value="{{ comp_name }}">{{ comp_name }}</option>
+					{% endfor%}
+
+				</select>
 			</div>
 		</div>
 		<div class="col-md-4">
@@ -40,6 +38,7 @@
 					<th>Per</th>
 					<th>Photo</th>
 					<th>Edit</th>
+					<th>Delete</th>
 				</thead>
 				<tbody>
 
@@ -64,9 +63,14 @@
 							{% endif %}
 						</td>
 						<td>
-							<a href="productDetail.html">
+							<a href="{% url 'products:updateProducts' pk=product.pk %}">
 								<span class="fa fa-pencil"></span>
 							</a>
+						</td>
+						<td>
+							<a href="{% url 'products:deleteProducts' pk=product.pk %}">
+					        	<span class="fa fa-remove"></span>
+					        </a>
 						</td>
 					</tr>
 				{% endfor %}

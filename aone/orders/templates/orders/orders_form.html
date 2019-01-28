@@ -3,14 +3,35 @@
 
 {% block content %}
 
-<form method="POST" >
+<form method="POST" id="orderForm" data-items-url="{% url 'orders:ajax_load_items' %}" novalidate>
     {% csrf_token %}
     {% bootstrap_form form %}
 
     {% buttons %}
     <button type="submit" class="btn btn-primary btn-large">Create Order</button>
+
     {% endbuttons %}
 
 </form>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_compName").change(function (){
+    var url = $("#orderForm").attr("data-items-url");
+    var companyId = $(this).val();
+
+
+    $.ajax({
+    url: url,
+    data: {
+        'compName': companyId
+    },
+    success: function (data){
+        $("#id_itemName").html(data);
+
+    }
+    });
+
+    });
+</script>
 
 {% endblock %}

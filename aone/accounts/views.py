@@ -4,6 +4,7 @@ from accounts import forms
 from django.urls import reverse_lazy
 
 
+
 class SignUp(generic.CreateView):
 
     form_class = forms.UserCreateForm

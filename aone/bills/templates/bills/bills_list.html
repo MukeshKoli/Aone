@@ -7,42 +7,45 @@
         <h5 class="card-body">Filter By:</h5>
     </div>
 	<div class="col-md-3 card">
-		<div class="dropdown card-body">
-			<button type="button" class="btn btn-primary btn-block dropdown-toggle" data-toggle="dropdown">
-				Company name
-			</button>
-			<div class="dropdown-menu">
-				<a class="dropdown-item">Sigma</a>
-				<a class="dropdown-item">Vision</a>
-				<a class="dropdown-item">Company 3</a>
-				<a class="dropdown-item">Company 4</a>
+		<div class="card-body">
+			<select id="compFilter" class = "btn btn-Light btn-block" data-tableId="mytab">
+				<option value="All">Company</option>
+				{% for comp_name in comp_name_list %}
+					<option value="{{ comp_name }}">{{ comp_name }}</option>
+				{% endfor%}
+
+				</select>
 			</div>
-		</div>
 	</div>
 	<div class="col-md-2 card">
 		<div class="dropdown card-body">
-			<button type="button" class="btn btn-primary btn-block dropdown-toggle" data-toggle="dropdown">
-				Status
-			</button>
-			<div class="dropdown-menu">
-				<a class="dropdown-item">In Progress</a>
-				<a class="dropdown-item">Billable</a>
-				<a class="dropdown-item">Billed</a>
-			</div>
+			<select id="statFilter" class="btn btn-Light btn-Light" data-tableId="mytab">
+				<option value="All">Status</option>
+				<option value="Generated">Generated</option>
+				<option value="Bill_Paid">Bill_Paid</option>
+
+			</select>
 		</div>
 
 	</div>
 	<div class="col-md-2 card">
-		<div class="dropdown card-body">
-			<button type="button" class="btn btn-primary btn-block dropdown-toggle" data-toggle="dropdown">
-				Month
-			</button>
-			<div class="dropdown-menu">
-				<a class="dropdown-item">Jan</a>
-				<a class="dropdown-item">Feb</a>
-				<a class="dropdown-item">March</a>
+		<div class="card-body">
+			<select id="monFilter" class="btn btn-Light btn-block" data-tableId="mytab">
+				<option value="All">Month</option>
+				<option value="January">January</option>
+				<option value="February">February</option>
+				<option value="March">March</option>
+				<option value="April">April</option>
+				<option value="May">May</option>
+				<option value="June">June</option>
+				<option value="July">July</option>
+				<option value="August">August</option>
+				<option value="September">September</option>
+				<option value="October">October</option>
+				<option value="November">November</option>
+				<option value="December">December</option>
+			</select>
 			</div>
-		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="card" style="background-color: yellow;">

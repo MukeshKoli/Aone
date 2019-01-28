@@ -38,12 +38,12 @@
 						<td>{{ company.CompAddress }}</td>
 						<td>{{ company.compContact }}</td>
 						<td>
-							<a href="companyDetail.html">
+							<a href="{% url 'company:updateCompany' pk=company.pk %}">
 					        	<span class="fa fa-pencil"></span>
 					        </a>
         				</td>
 						<td>
-							<a href="companyDetail.html">
+							<a href="{% url 'company:deleteCompany' pk=company.pk %}">
 					        	<span class="fa fa-remove"></span>
 					        </a>
 						</td>
